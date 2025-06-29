@@ -1,0 +1,65 @@
+﻿@model CodeFirstProjectPastane.Models.ViewModel.ReportViewModel
+
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<form method="post" id="raporForm">
+    <div class="mb-3">
+        <select class="form-select" id="raporSecimi" name="secilenRapor">
+            <option selected>-- Panel Seçiniz --</option>
+            <option>Kategorilere göre ürün listesi</option>
+            <option>toplam ürün çeşidi</option>
+            <option>toplam ürün sayısı</option>
+            <option>Müşteri adreslerinin a-z sıralanması</option>
+            <option>Personel deneyimine göre büyükten küçüğe sıralanması</option>
+            <option>Kadın personellerin listesi</option>
+            <option>Erkek personellerin listesi</option>
+        </select>
+    </div>
+</form>
+
+
+
+<!-- Seçilen rapor sonucunun geleceği alan -->
+<div id="raporSonuc">
+    <div class="alert alert-info">
+        Lütfen bir rapor seçiniz.
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>const raporSelect = document.getElementById("raporSecimi");
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const secili = localStorage.getItem("secilenRapor");
+            if (secili) {
+                raporSelect.value = secili;
+                raporuGetir(secili);
+            }
+        });
+
+        raporSelect.addEventListener("change", function () {
+            const secilenRapor = this.value;
+            localStorage.setItem("secilenRapor", secilenRapor);
+            raporuGetir(secilenRapor);
+        });
+
+        function raporuGetir(raporAdi) {
+            fetch("/Admin/GetRapor", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "secilenRapor=" + encodeURIComponent(raporAdi)
+            })
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("raporSonuc").innerHTML = html;
+                })
+                .catch(error => {
+                    console.error("Hata:", error);
+                });
+        }</script>
+}

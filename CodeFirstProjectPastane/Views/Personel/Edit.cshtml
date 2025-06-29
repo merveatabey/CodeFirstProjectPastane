@@ -1,0 +1,44 @@
+﻿@model CodeFirstProjectPastane.Models.Personel
+
+@{
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+
+<div class="container mt-5">
+    <form asp-action="Edit" asp-controller="Personel" method="post" class="mx-auto" style="max-width:1200px;">
+        <input type="hidden" asp-for="PersonelId" />
+
+        <div class="mb-3">
+            <label asp-for="AdSoyad" class="form-label fw-bold">Personel Adı :</label>
+            <input asp-for="AdSoyad" type="text" class="form-control" placeholder="Personel adını giriniz" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Yas" class="form-label fw-bold">Yaş :</label>
+            <input asp-for="Yas" type="text" class="form-control" placeholder="Yaş bilgisini girin" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Deneyim" class="form-label fw-bold">Deneyim :</label>
+            <input asp-for="Deneyim" type="text" class="form-control" placeholder="Deneyim yılını girin" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Adres" class="form-label fw-bold">Adres :</label>
+            <input asp-for="Adres" type="text" class="form-control" placeholder="Adres bilgisini girin" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Eposta" class="form-label fw-bold">E-posta :</label>
+            <input asp-for="Eposta" type="text" class="form-control" placeholder="Mail adresini girin" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Departman.DepartmanAdi" class="form-label fw-bold">Departman Adı :</label>
+            <input asp-for="Departman.DepartmanAdi" type="text" class="form-control" placeholder="Departman adını girin" />
+        </div>
+
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-outline-success px-4">
+                Kaydet
+            </button>
+        </div>
+    </form>
+</div>

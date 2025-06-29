@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+@{
+    ViewData["Title"] = "Departman Panel";
+}
+
+
+@model IEnumerable<CodeFirstProjectPastane.Models.Departman>
+
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>
+            <i class="fas fa-table me-1"></i>
+            Departman Tablosu
+        </span>
+
+        <a asp-action="Create" asp-controller="Departman" class="btn btn-success btn-sm">
+            <i class="fas fa-plus"></i> Yeni Departman Ekle
+        </a>
+    </div>
+
+    <div class="card-body">
+        <table id="datatablesSimple" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Departman Adı</th>
+                    <th>Personel Sayısı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <th>Departman Adı</th>
+                    <th>Personel Sayısı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.DepartmanAdi</td>
+                        <td>@item.PersonelSayisi</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Departman" asp-route-id="@item.DepartmanId" class="btn btn-outline-warning btn-sm" onclick="edit(this)">Edit</a>
+                            <form asp-action="Delete" asp-controller="Departman" method="post" style="display:inline" onsubmit="return del(this)">
+                                <input type="hidden" name="id" value="@item.DepartmanId" />
+                                <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>function edit(element) {
+
+        alert("Güncelleme sayfasına yönlendiriliyorsunuz!")
+
+        //tüm satırlardaki seçimi kaldır (isteğe bağlı)
+        const rows = document.querySelectorAll('#datatablesSimple tbody tr');
+        rows.forEach(row => row.style.backgroundColor = '');
+
+        //tıklanana satırı bul
+        const tr = element.closest('tr');
+        //satırın arka plan rengini değiştir
+        tr.style.backgroundColor = '#fff3cd';
+
+    }
+
+    function del(element) {
+
+        const rows = document.querySelectorAll('#datatableSimple tbody tr');
+        rows.forEach(row => row.style.backgroundColor = '');
+
+        const tr = element.closest('tr');
+        tr.style.backgroundColor = '#f8d7da';
+
+        return true;
+
+    }</script>  

@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+@{
+    ViewData["Title"] = "Ürün Ekle";
+}
+
+@model CodeFirstProjectPastane.Models.Urun
+
+<div class="container mt-5 mb-5 px-4 py-4 border rounded bg-light shadow-sm">
+    <h2 class="mb-4">Yeni Ürün Ekle</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="form-group mb-3">
+            <label asp-for="UrunAd" class="form-label"></label>
+            <input asp-for="UrunAd" class="form-control" />
+            <span asp-validation-for="UrunAd" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Fiyat" class="form-label"></label>
+            <input asp-for="Fiyat" class="form-control" />
+            <span asp-validation-for="Fiyat" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Adet" class="form-label"></label>
+            <input asp-for="Adet" class="form-control" />
+            <span asp-validation-for="Adet" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Kategori" class="form-label"></label>
+            <input asp-for="Kategori" class="form-control" />
+            <span asp-validation-for="Kategori" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
+    </form>
+</div>

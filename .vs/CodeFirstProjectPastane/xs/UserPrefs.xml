@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{6AAFEFCC-5378-42E5-92DE-13E4819B7357}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CodeFirstProjectPastane" expanded="True">
+            <Node name="CodeFirstProjectPastane" expanded="True">
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Departman" expanded="True" />
+                <Node name="Musteri" expanded="True" />
+                <Node name="Urun" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.CodeFirstProjectPastane PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

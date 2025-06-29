@@ -1,0 +1,120 @@
+﻿@model CodeFirstProjectPastane.Models.ViewModel.ReportViewModel
+
+@{
+    Layout = null;
+}
+
+@if (Model.Urunler != null && Model.Urunler.Any())
+{
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            Ürün Raporu
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Kategori</th>
+                        <th>Ürün Adı</th>
+                        <th>Fiyat</th>
+                        <th>Stok (Adet)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Urunler)
+                    {
+                        <tr>
+                            <td>@item.Kategori</td>
+                            <td>@item.UrunAd</td>
+                            <td>@item.Fiyat ₺</td>
+                            <td>@item.Adet</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (ViewBag.ToplamCesit != null)
+            {
+                <p><strong>Toplam Ürün Çeşidi:</strong> @ViewBag.ToplamCesit</p>
+            }
+            @if (ViewBag.ToplamAdet != null)
+            {
+                <p><strong>Toplam Ürün Adedi:</strong> @ViewBag.ToplamAdet</p>
+            }
+        </div>
+    </div>
+}
+else if (Model.Musteriler != null && Model.Musteriler.Any())
+{
+    <div class="card">
+        <div class="card-header bg-warning text-dark">
+            Müşteri Raporu
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ad Soyad</th>
+                        <th>Adres</th>
+                        <th>Telefon</th>
+                        <th>E-posta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Musteriler)
+                    {
+                        <tr>
+                            <td>@item.AdSoyad</td>
+                            <td>@item.Adres</td>
+                            <td>@item.Telefon</td>
+                            <td>@item.Eposta</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else if (Model.Personeller != null && Model.Personeller.Any())
+{
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            Personel Raporu
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ad Soyad</th>
+                        <th>Departman</th>
+                        <th>Deneyim (Yıl)</th>
+                        <th>Yaş</th>
+                        <th>Cinsiyet</th>
+                        <th>Telefon</th>
+                        <th>E-posta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Personeller)
+                    {
+                        <tr>
+                            <td>@item.AdSoyad</td>
+                            <td>@item.Departman?.DepartmanAdi</td>
+                            <td>@item.Deneyim</td>
+                            <td>@item.Yas</td>
+                            <td>@item.Cinsiyet</td>
+                            <td>@item.Telefon</td>
+                            <td>@item.Eposta</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        Gösterilecek veri bulunamadı.
+    </div>
+}
